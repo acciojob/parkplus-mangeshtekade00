@@ -9,7 +9,7 @@ import java.util.List;
 public class Spot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer spotId;
 
     private SpotType spotType;
 
@@ -24,8 +24,8 @@ public class Spot {
     @OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
     private List<Reservation> reservationList = new ArrayList<>();
 
-    public Spot(Integer id, SpotType spotType, int pricePerHour, boolean occupied, ParkingLot parkingLot, List<Reservation> reservationList) {
-        this.id = id;
+    public Spot(Integer soptId, SpotType spotType, int pricePerHour, boolean occupied, ParkingLot parkingLot, List<Reservation> reservationList) {
+        this.spotId = soptId;
         this.spotType = spotType;
         this.pricePerHour = pricePerHour;
         this.occupied = occupied;
@@ -37,11 +37,11 @@ public class Spot {
     }
 
     public Integer getId() {
-        return id;
+        return spotId;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.spotId = spotId;
     }
 
     public SpotType getSpotType() {
