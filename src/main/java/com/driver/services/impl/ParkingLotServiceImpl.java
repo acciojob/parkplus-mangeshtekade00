@@ -4,7 +4,6 @@ import com.driver.model.ParkingLot;
 import com.driver.model.Spot;
 import com.driver.model.SpotType;
 import com.driver.repository.ParkingLotRepository;
-import com.driver.repository.SpotRepository;
 import com.driver.services.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
