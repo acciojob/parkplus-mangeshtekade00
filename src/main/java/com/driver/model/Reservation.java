@@ -1,16 +1,14 @@
 package com.driver.model;
 
 import javax.persistence.*;
+import java.security.GeneralSecurityException;
 
 @Entity
-@Table(name = "reservation")
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    private int numberOfHours;
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private  Integer id;
+    private Integer numberOfHours;
     @JoinColumn
     @ManyToOne
     private User user;
@@ -19,18 +17,18 @@ public class Reservation {
     @ManyToOne
     private Spot spot;
 
-    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "reservation",cascade = CascadeType.ALL)
     private Payment payment;
 
-    public Reservation(Integer id, int numberOfHours, int bill, User user, Spot spot, Payment payment) {
+    public Reservation() {
+    }
+
+    public Reservation(Integer id, Integer numberOfHours, User user, Spot spot, Payment payment) {
         this.id = id;
         this.numberOfHours = numberOfHours;
         this.user = user;
         this.spot = spot;
         this.payment = payment;
-    }
-
-    public Reservation() {
     }
 
     public Integer getId() {
@@ -41,11 +39,11 @@ public class Reservation {
         this.id = id;
     }
 
-    public int getNumberOfHours() {
+    public Integer getNumberOfHours() {
         return numberOfHours;
     }
 
-    public void setNumberOfHours(int numberOfHours) {
+    public void setNumberOfHours(Integer numberOfHours) {
         this.numberOfHours = numberOfHours;
     }
 

@@ -5,35 +5,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "spot")
 public class Spot {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
+    @Enumerated(value = EnumType.STRING)
     private SpotType spotType;
-
-    private int pricePerHour;
-
-    private boolean occupied = false;
-
+    private Integer  pricePerHour;
+    private Boolean occupied;
     @JoinColumn
     @ManyToOne
     private ParkingLot parkingLot;
 
-    @OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
-    private List<Reservation> reservationList = new ArrayList<>();
+    @OneToMany(mappedBy = "spot",cascade = CascadeType.ALL)
+    private List<Reservation> reservationList=new ArrayList<>();
 
-    public Spot(Integer id, SpotType spotType, int pricePerHour, boolean occupied, ParkingLot parkingLot, List<Reservation> reservationList) {
+    public Spot() {
+    }
+
+    public Spot(Integer id, SpotType spotType, Integer pricePerHour, Boolean occupied
+            , ParkingLot parkingLot, List<Reservation> reservationList) {
         this.id = id;
         this.spotType = spotType;
         this.pricePerHour = pricePerHour;
         this.occupied = occupied;
         this.parkingLot = parkingLot;
         this.reservationList = reservationList;
-    }
-
-    public Spot() {
     }
 
     public Integer getId() {
@@ -52,19 +49,19 @@ public class Spot {
         this.spotType = spotType;
     }
 
-    public int getPricePerHour() {
+    public Integer getPricePerHour() {
         return pricePerHour;
     }
 
-    public void setPricePerHour(int pricePerHour) {
+    public void setPricePerHour(Integer pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 
-    public boolean getOccupied() {
+    public Boolean getOccupied() {
         return occupied;
     }
 
-    public void setOccupied(boolean occupied) {
+    public void setOccupied(Boolean occupied) {
         this.occupied = occupied;
     }
 

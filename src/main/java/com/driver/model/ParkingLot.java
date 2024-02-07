@@ -5,27 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "parking lot")
 public class ParkingLot {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private String name;
-
     private String address;
 
-    @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL)
-    private List<Spot> spotList = new ArrayList<>();
+    @OneToMany(mappedBy = "parkingLot",cascade = CascadeType.ALL)
+    private List<Spot> spotList=new ArrayList<>();
 
-    public ParkingLot(Integer id, String name, String address, List<Spot> spotList) {
-        this.id = id;
+    public ParkingLot() {
+    }
+
+    public ParkingLot(String name, String address, List<Spot> spotList) {
         this.name = name;
         this.address = address;
         this.spotList = spotList;
-    }
-
-    public ParkingLot() {
     }
 
     public Integer getId() {
